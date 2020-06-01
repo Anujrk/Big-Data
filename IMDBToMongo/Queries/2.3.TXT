@@ -1,0 +1,8 @@
+People
+{$unwind : "$director" }
+{$lookup : {from : "Movies",localField : "director",foreignField : "_id",as : "d"}}
+{$unwind : "$d" }
+{$match : {"d.genres" : {$in : ["Drama"]}, "d.releaseYear" : {$in : [1999,2000,2001]}}}
+{$group : {_id : "$_id",count : {$sum : 1}}}
+{$match : {count : {$gt : 5}}}
+{$project : {"_id" : 1}}

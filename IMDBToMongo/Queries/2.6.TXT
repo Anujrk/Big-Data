@@ -1,0 +1,8 @@
+People
+{$match : {deathYear : {$exists : false}}}
+{$unwind : "$writer" }
+{$lookup : {from : "Movies",localField : "writer",foreignField : "_id",as : "w"}}
+{$unwind : "$w" }
+{$match : {"w.genres" : {$in : ["Comedy"]}}}
+{$group : {_id : "$_id",total : {$sum : 1}}}
+{$match : {total : {$gt : 50}}}

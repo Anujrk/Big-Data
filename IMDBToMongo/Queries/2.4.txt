@@ -1,0 +1,4 @@
+Movies
+{$match: {numberOfVotes: {$gt: 10000}, genres: "Action"}}
+{$group: {_id: null,avgRating: {$avg: "$rating"}}}
+{$project: {"_id": 0}}

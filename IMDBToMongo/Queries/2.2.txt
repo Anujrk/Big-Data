@@ -1,0 +1,8 @@
+People
+{$match: {name:"Kathryn Bigelow"}}
+{$lookup: {from: 'Movies',localField: 'director',foreignField: '_id',as: 'Director_info'}}
+{$unwind: {path: "$Director_info"}}
+{$match: {"Director_info.runtime":{$lt:100},"Director_info.genres":"Drama"}}
+{$project: { "Director_info.title":1}}
+{$group: {_id: "$Director_info.title"}}
+{$project: {"_id": 0, title : "$_id"}}

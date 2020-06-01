@@ -1,0 +1,7 @@
+People
+{$match : {actor : {$ne : []},deathYear : {$exists : true},birthYear : {$exists : true}}},
+{$group : {_id : { "by" : "$birthYear",dy : "$deathYear" },total : {$sum : 1},actors : {$push : "$_id"}}},
+{$match : {total :{$gt : 1} }},
+{$project : { _id : 1,actors : 1,total : 1,yearsOld  :{$subtract  :["$_id.dy","$_id.by"]}}},
+{$sort : {yearsOld : 1,total : -1}},
+{$limit : 60}
