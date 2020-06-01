@@ -1,0 +1,13 @@
+select distinct personid from
+(select actedin.personId from actedin inner join hasgenre on hasgenre.movieId = actedin.movieId
+inner join genre on genre.id = hasgenre.genreId
+where genre.name ='drama' and personid not in (select actedin.personId from actedin inner join hasgenre on hasgenre.movieId = actedin.movieId
+inner join genre on genre.id = hasgenre.genreId
+where genre.name = 'comedy')
+)temp1
+inner join person 
+on temp1.personId = person.id 
+where substring_index(name,' ',-1) like 'reddy' or substring_index(name,'-',-1) like 'reddy' or SUBSTRING_INDEX(SUBSTRING_INDEX(name,' ', 2), ' ',-1) like 'reddy' 
+or SUBSTRING_INDEX(SUBSTRING_INDEX(name,'-', 1), ' ',-1) like 'reddy'
+or substring_index(name,' ',-1)like 'patel' or substring_index(name,'-',-1)like 'patel' or SUBSTRING_INDEX(SUBSTRING_INDEX(name,' ', 2), ' ',-1) like 'patel' 
+or SUBSTRING_INDEX(SUBSTRING_INDEX(name,'-', 1), ' ',-1) like 'patel';

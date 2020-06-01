@@ -1,0 +1,6 @@
+The following query retrieves data such as composers of soundtracks of certain genre.The following data does not discriminate against any individual or any group or religion .
+The Database files used for the project is a sole property of IMDB and is used for personal and education use only. 
+As stated by IMDB , the database can be used for personal and non-commercial use.
+The data included in the database is a copyright property of IMDB and its shared companies . 
+Any legal issues reported by other individual or company should be addressed to IMDB and AMAZON.
+No data was tempered while making of this project .

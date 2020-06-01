@@ -1,0 +1,8 @@
+select distinct temp1.personid from
+(select actedin.personid from actedin inner join directedby on directedby.movieId = actedin.movieid
+inner join person on person.id = directedby.personid
+where person.name = "Clint Eastwood") as temp1
+inner join 
+(select table1.personid from actedin as table1 inner join actedin as table2 on table1.movieid = table2.movieid
+inner join person on person.id = table2.personid
+where person.name = "Dakota Fanning") as temp2 on temp1.personid = temp2.personid;

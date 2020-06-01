@@ -1,0 +1,10 @@
+ select avg(runtime) from movie as title1 where title1.id in( 
+ select movieId from hasgenre  inner join genre 
+ on hasgenre.genreId = genre.id 
+ inner join movie 
+ on hasgenre.movieid = movie.id 
+ where releaseYear between 1980 and 1999 and rating > 6.5 
+ and numberOfVotes > 100000 and genre.name='comedy') and
+ exists ( select id from movie as title2 
+ where title2.title like concat(title1.title,'%') and title2.releaseyear 
+ between title1.releaseyear + 1 and 1999 );

@@ -1,0 +1,5 @@
+select personId,count(movieId) as count from producedby join movie join person
+on person.id = producedby.personId and movie.id = producedby.movieId 
+where releaseYear = 2015
+group by personId
+having count(movieId) >25;

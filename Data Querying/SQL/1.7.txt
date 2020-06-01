@@ -1,0 +1,4 @@
+select distinct personid from writtenby,movie,person
+where writtenby.movieId = movie.id and writtenby.personId = person.id and movie.title like '%jesus%christ%' and rating > (
+select max(rating) from movie,person,directedby
+where directedby.personId = person.id and directedby.movieId = movie.id and person.name ='Edward D. Wood Jr.');

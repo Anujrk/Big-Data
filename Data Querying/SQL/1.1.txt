@@ -1,0 +1,8 @@
+select personId from person join movie join actedin
+on person.id = actedin.personId and movie.id = actedin.movieId 
+where runtime > 150 and releaseYear = 2016 and personId NOT IN 
+(select personId from person join movie join actedin
+on person.id = actedin.personId and movie.id = actedin.movieId 
+where releaseYear between 2017 and 2020)
+group by personId
+having count(movieId) >=1;

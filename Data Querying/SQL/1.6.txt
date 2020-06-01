@@ -1,0 +1,6 @@
+select  personId from person join movie join composedby
+on composedby.movieId = movie.id and composedby.personId = person.id 
+where movieId in (
+select movieid from movie join genre join hasgenre
+on hasgenre.genreId = genre.id and hasgenre.movieId = movie.id 
+where genre.name like 'sci-fi' and runtime>120 and rating<5);

@@ -1,0 +1,20 @@
+select personId,count(editedby.movieId) from editedby
+inner join hasgenre on hasgenre.movieId = editedby.movieId
+inner join genre on genre.id = hasgenre.genreid	
+where genre.name = 'action' and
+personId in (
+select personId from editedby
+inner join hasgenre on hasgenre.movieId = editedby.movieId
+inner join genre on genre.id = hasgenre.genreid	
+where genre.name = 'horror' 
+)
+and 
+personId not in (
+select personId from editedby
+inner join hasgenre on hasgenre.movieId = editedby.movieId
+inner join genre on genre.id = hasgenre.genreid	
+where genre.name = 'romance'
+)
+group by personId 
+order by count(editedby.movieId) desc,personId asc 
+limit 50;
