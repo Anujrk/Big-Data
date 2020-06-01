@@ -1,0 +1,5 @@
+select actor,count(actor) as count from Movie_Actor_G join Movie_G on Movie_Actor_G.movie = Movie_G.id
+where genre = 'Comedy' and year between 2012 and 2018  and actor in (
+select id from Actor_G where alive = 0 and deathcause is null )
+group by actor
+having count > 1;

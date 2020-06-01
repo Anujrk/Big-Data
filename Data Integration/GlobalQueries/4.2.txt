@@ -1,0 +1,11 @@
+select id from Actor_G 
+where name like 'Ja%' and id in (
+select actor from Movie_Actor_G 
+join Movie_G on Movie_Actor_G.movie = Movie_G.id 
+where genre = 'Comedy'
+group by actor
+having count(actor) > 2
+) and id not in (
+select actor from Movie_Actor_G join Movie_G on Movie_Actor_G.movie = Movie_G.id
+where genre = 'ActionDrama'
+);
