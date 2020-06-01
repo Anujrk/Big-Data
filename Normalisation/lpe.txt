@@ -1,0 +1,8 @@
+1.Data selected from the table may contain information that is private or property of individual not meant to be enclosed for others. The program was not made in intent to do the same , and any such occurrence is by mere incidence and not liable to the creator of the program.
+
+2. The program does not contain any generalized data hence no LPE is required for part 2.
+
+3. The program does not contain any generalized data hence no LPE is required for part 3.
+
+4. The program does not contain any generalized data hence no LPE is required for part 4.
+
